@@ -1,0 +1,22 @@
+.listItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 156px;
+}
+.listItem span {
+    margin:0 0 0 .5rem;
+}
+
+.listItem__requirements {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: .7rem;
+}
+
+.listItem__requirements p {
+    margin-left: .7em;
+}

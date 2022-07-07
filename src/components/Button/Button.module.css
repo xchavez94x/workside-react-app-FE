@@ -1,0 +1,65 @@
+:root {
+    --button-color: #005DF9;
+}
+
+.button {
+    background-color: #005DF9;
+    width: 134px;
+    height: 51px;
+    outline: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #2473fc;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: #0c57d8;
+    cursor: pointer;
+}
+
+.tag {
+    font-size: 1rem;
+    background-color: #191F30;
+    height: 36px;
+    width: max-content;
+    padding: 0 14px;
+}
+
+.tag:hover {
+    background-color: #1e2435;
+    cursor: pointer;
+}
+
+.tag:active {
+    background-color: #111622;
+    cursor: pointer;
+}
+
+.filter {
+    width: 130px;
+    height: 100%;
+    background-color: #1F273C;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+}
+
+.filter span {
+    width: 60px;
+}
+
+.filter img {
+    margin-left: 4px;
+}
+
+.filter:hover {
+    cursor: pointer;
+    background-color:  #1c2233;
+}

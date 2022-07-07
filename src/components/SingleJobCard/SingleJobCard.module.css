@@ -1,0 +1,104 @@
+.jobcard {
+    width: 46%;
+    height: 673px;
+    background-color: #1F273C;
+    margin-top: 3.6rem;
+    
+}
+
+.jobcard .jobcard__title {
+    width: 90%;
+    height: 46px;
+    margin: 46px auto;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+/* .jobcard__title h3 {
+    width: 40%;
+} */
+
+.jobcard__title p {
+    width: 50%;
+}
+
+.jobcard__title h5 {
+    text-align: right;
+}
+
+
+.jobcard .jobcard__info {
+    width: 90%;
+    height: 90px;
+    background-color: #15192A;
+    margin: auto;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.jobcard__info h4 {
+    width: 33%;
+    padding-left: 4px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.jobcard__info p {
+    width: 33%;
+    padding-left: 4px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.jobcard__overview {
+    width: 90%;
+    margin:  auto;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.jobcard__overview p {
+    margin-top: 1em;
+    line-height: 1.5em;
+}
+
+.jobcard__requirements {
+    width: 90%;
+    margin: 1rem auto;
+}
+
+.jobcard__button {
+    width: 90%;
+    margin: auto;
+    margin-top: 2.4rem;
+    display: flex;
+    flex-flow: row-reverse;
+}
+
+@media screen and (max-width: 1024px) {
+    .jobcard {
+        width: 46%;
+        height: 766px;
+        margin-top: 1rem;
+    }
+} 
+
+@media screen and (max-width: 480px) {
+    .jobcard {
+        width: 98%;
+        height: 760px;
+        position: absolute;
+        top: 0rem;
+        transform: translateX(-200%);
+    }
+
+    .show {
+        transform: translateX(0);
+    }
+}

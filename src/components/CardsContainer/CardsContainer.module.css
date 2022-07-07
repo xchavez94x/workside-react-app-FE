@@ -1,0 +1,30 @@
+.cards {
+    width: 33%;
+    height: 660px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 3.3rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+@media screen and (max-width: 1024px) {
+    .cards {
+        width: 50%;
+        height: 766px;
+        margin: .6rem 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cards {
+        width: 100%;
+        margin: 1rem;
+    }
+}

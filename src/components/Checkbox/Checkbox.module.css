@@ -1,0 +1,22 @@
+.checkbox {
+    width: 100%;
+    height: 1.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.checkbox__label span {
+    color: #8F9BB3;
+    font-family: roboto-regular;
+    margin-left: .51rem;
+    font-size: 1rem;
+}
+
+.checkbox__label input[type=checkbox] {
+    accent-color: #8F9BB3;
+    width: 18px;
+    height: 18px;
+}

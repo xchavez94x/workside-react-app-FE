@@ -1,0 +1,84 @@
+.card {
+    width: 100%;
+    min-height: 152px;
+    max-height: 200px;
+    border-radius: 5px;
+    margin: .55rem auto;
+    background-color: #1F273C;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out .2s;
+}
+
+.card:hover {
+    transform: translateX(10px);
+    cursor: pointer;
+}
+
+.card .card__title {
+    width: 74%;
+    height: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+
+} 
+.card__title p {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card__title span {
+    margin-left: .4rem;
+    font-size: .8rem;
+}
+
+.card__title h5 {
+    width: 90%;
+}
+
+.card__logo {
+    width: 16%;
+    height: 44px;
+}
+
+.card__title h2 {
+    width: 79%;
+}
+
+.card__info {
+    width: 96%;
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card__info .card__buttons {
+    width: 48%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.card__info .card__status {
+    margin-left: 2.2rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .card{
+        
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card{
+        min-height: 200px;
+    }
+}

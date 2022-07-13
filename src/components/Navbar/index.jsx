@@ -5,7 +5,7 @@ import styles from "./Navbar.module.css";
 import Logo from "../../assets/images/Logo.svg";
 import BurgerMenu from "../../assets/images/Hamburger-Menu.svg"
 
-const Navbar = props => {
+const Navbar = ({ burgerClicked }) => {
     return (
         <div  
             className={styles.navbar}
@@ -53,6 +53,7 @@ const Navbar = props => {
             </div>
             <div
                 className={styles.burger}
+                onClick={burgerClicked}
             >   
                 <img 
                     src={BurgerMenu}

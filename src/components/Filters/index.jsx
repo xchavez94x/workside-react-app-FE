@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-import { FilterItem } from '../../utilities/FilterItem';
 import styles from "./Filters.module.css";
 import FilterList from '../FilterList';
 import Button from '../Button';
 
 class Filters extends Component {
+
     state = {
         filterItems: [
             {
@@ -58,32 +58,51 @@ class Filters extends Component {
         ],
         selectedFilters: [
 
-        ]
+        ],
+
+        filterClicked: false
     }
 
-    selectedFiltersHandler(e) {
-        // copied the state 
-        // const items = [...this.state.selectedFilters];
-        // const exisitigSelectedItem = items.findIndex(item => item.name === e.target.name);
-        // // check if the item exists with the same info so we just modify it 
-        // if (items[exisitigSelectedItem]) {
-        //     items[exisitigSelectedItem].selected = false
-        // } else {
-        //     const newSelect = new FilterItem(e.target.name, e.target.checked);
-        //     items.push(newSelect);
-        // }
-        // this.setState({ selectedFilters: items })
+    // selectedFiltersHandler(e) {
+
+    // }
+
+    showFiltersHandler () {
+        this.setState( prevState => {
+            return {
+                ...prevState,
+                filterItems: [ 
+                    ...prevState.filterItems
+                ],
+                selectedFilters: {
+                    ...prevState.selectedFilters
+                },
+                filterClicked: !prevState.filterClicked
+            }
+        });
     }
+
     render() {
+        let classes = [
+            styles.filters, 
+            styles.showFilters
+        ]
         return (
             <>
-                <div className={styles.small__menu__filters} >
+                <div 
+                    className={styles.small__menu__filters} 
+                    
+                >
                     <Button 
                         type="filter"
                         label="Filters"
+                        isClicked={this.state.filterClicked}
+                        clicked={this.showFiltersHandler.bind(this)}
                     />
                 </div>
-                <form className={styles.filters}>
+                <form 
+                    style={ this.state.filterClicked ? { display: "flex" } : { display: 'none' }}
+                    className={classes.join(' ')}>
                     <FilterList
                         config={this.state.filterItems}
                         change={(e) => this.selectedFiltersHandler(e)}
@@ -95,4 +114,4 @@ class Filters extends Component {
 
 }
 
-export default Filters;
+export default React.memo(Filters);

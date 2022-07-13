@@ -34,7 +34,7 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .links {
         display: none;
     }
@@ -45,10 +45,30 @@
     
     .burger {
         display: block;
-        width: 3rem;
+        width: 4rem;
+        height: 2rem;
         align-self: flex-end;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
+    .burger:hover {
+        cursor: pointer;
+    }
+
+    .burger img {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* .links {
+        display: none;
+    }
+    
+    .account {
+        display: none;
+    } */
+    
 }

@@ -16,5 +16,5 @@ it('should return the path to the icon', () => {
 
     const result = checkStatus(status, firstIcon, secondIcon);
 
-    expect(result).toBe(2)
+    expect(result).toBe('first')
 })

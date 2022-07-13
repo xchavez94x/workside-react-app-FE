@@ -59,6 +59,33 @@
     margin-left: 4px;
 }
 
+.rotate {
+    animation: rotateicon .3s ease-in forwards;
+}
+
+.rotateback {
+    transform: rotate(180deg);
+    animation: rotateback .3s ease-in forwards;
+}
+
+@keyframes rotateicon {
+    0% {
+        transform: rotate(180deg);
+    } 
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes rotateback {
+    0% {
+        transform: rotate(0);
+    } 
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
 .filter:hover {
     cursor: pointer;
     background-color:  #1c2233;

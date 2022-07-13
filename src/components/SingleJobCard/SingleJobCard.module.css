@@ -102,3 +102,19 @@
         transform: translateX(0);
     }
 }
+
+
+@media screen and (max-width: 768px) {
+    .jobcard {
+        width: 98%;
+        height: 760px;
+        position: absolute;
+        top: 0rem;
+        transform: translateX(-200%);
+    }
+
+    .show {
+        transform: translateX(0);
+    }
+}
+

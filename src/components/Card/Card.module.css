@@ -45,6 +45,9 @@
 .card__logo {
     width: 16%;
     height: 44px;
+    background-image: url(../../assets/images/First-Job-Logo.svg);
+    background-position: 0 0 ;
+    background-repeat: no-repeat;
 }
 
 .card__title h2 {

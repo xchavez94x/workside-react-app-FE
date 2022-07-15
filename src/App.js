@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from "react-router-dom"
-
 import Container from './components/Container';
 import Navbar from './components/Navbar';
 import Main from './pages/Main';
@@ -22,12 +21,12 @@ function App() {
         <Backdrop show={showMenu} clicked={showMobileMenuHandler} />
         <Routes>
           <Route 
-            path='/' 
-            element={<Main />} 
-          />
-          <Route 
             path='/account'
             element={<Account />}
+          />
+          <Route 
+            path='/' 
+            element={<Main />} 
           />
         </Routes>
       </Container>

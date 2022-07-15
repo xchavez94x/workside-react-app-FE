@@ -12,10 +12,6 @@ function Card() {
             className={styles.card}
         >
             <div className={styles.card__logo} >
-                <img
-                    src={CompanyLogo}
-                    alt="Company logo"
-                />
             </div>
             <div className={styles.card__title}
             >

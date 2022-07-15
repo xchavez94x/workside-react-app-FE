@@ -24,7 +24,7 @@ function ListItem({ status, info }) {
         listItem = (
             <div className={styles.listItem__requirements}>
                 <img
-                    src={BuleCheckmark}
+                    src={require('../../assets/images/Checkmark-blue.svg').default}
                     alt="Icon"
                 />
                 <p>

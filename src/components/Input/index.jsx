@@ -2,7 +2,7 @@ import React from 'react';
 
 import style from "./Input.module.css";
 
-const Input = ({ label, changed, clicked, name, value, type, placeholder }) => {
+const Input = ({ label, changed, clicked, config, value }) => {
     return (
         <div 
             className={style.input}
@@ -15,11 +15,9 @@ const Input = ({ label, changed, clicked, name, value, type, placeholder }) => {
             <input 
                 className={style.input__element} 
                 onClick={clicked}
-                name={name}
-                type={type}
-                value={value}
+                {...config}
                 onChange={changed}
-                placeholder={placeholder}
+                value={value}
             />
         </div>
     )

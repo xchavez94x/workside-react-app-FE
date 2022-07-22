@@ -1,8 +1,9 @@
 import React from 'react';
+import {toggleClass} from "../../utilities/addClass";
 
 import style from "./Input.module.css";
 
-const Input = ({ label, changed, clicked, config, value }) => {
+const Input = ({ label, changed, clicked, config, value, isValid, isTouched }) => {
     return (
         <div 
             className={style.input}
@@ -13,11 +14,12 @@ const Input = ({ label, changed, clicked, config, value }) => {
                 {label}
             </label>
             <input 
-                className={style.input__element} 
+                className={toggleClass(isValid, isTouched, style.invalid, style.input__element)}
                 onClick={clicked}
                 {...config}
                 onChange={changed}
                 value={value}
+
             />
         </div>
     )

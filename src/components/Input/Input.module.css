@@ -26,6 +26,11 @@
     margin: auto;
 }
 
+.invalid {
+    background-color: #f36060;
+    border: solid 1px #fa4a4a;
+}
+
 @media screen and (max-width: 800px) {
     .input {
         width: 50%;

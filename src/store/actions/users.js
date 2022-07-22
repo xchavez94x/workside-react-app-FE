@@ -13,7 +13,7 @@ export const register = data => {
                 }
             })
             .catch(error => {
-                dispach(submissionFailed(error))
+                dispach(submissionFailed(error.response.data))
             })
     }
 }

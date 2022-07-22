@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { register } from '../../store/actions';
+import { inputChangedHandler, submitHandler } from "../../utilities/helpers";
+import validateInput from "../../utilities/validateInput";
 
 import FormContainer from '../../components/FormContainer';
 import Loader from '../../components/Loader';
 import Input from '../../components/Input';
 import style from "./Account.module.css"
 
-const Account = (props) => {
+const Account = () => {
     const [inputs, setInputs] = useState([
         {
             label: "Firstname",
@@ -17,6 +19,10 @@ const Account = (props) => {
                 placeholder: "Please enter your first name"
             },
             value: "",
+            rules: {
+                minLength: 5
+            },
+            isValid: false
         },
         {
             label: "Lastname",
@@ -25,15 +31,20 @@ const Account = (props) => {
                 name: "lastname",
                 placeholder: "Please enter your last name"
             },
+            rules: {
+                minLength: 1
+            },
             value: "",
         },
-        
         {
             label: "E-mail",
             config: {
                 type: "email",
                 name: "email",
                 placeholder: "Please enter your valid E-mail"
+            },
+            rules: {
+                minLength: 1
             },
             value: "",
 
@@ -45,6 +56,9 @@ const Account = (props) => {
                 name: "password",
                 placeholder: "Please choose a secure password"
             },
+            rules: {
+                minLength: 1
+            },
             value: "",
         },
         {
@@ -54,30 +68,17 @@ const Account = (props) => {
                 name: "confirmPassword",
                 placeholder: "Please re-enter your password"
             },
+            rules: {
+                minLength: 1
+            },
             value: "",
         }
     ]);
-    const isLoading = useSelector(state => state.users.loading)
-    const dispatch = useDispatch()
+    const [touched, setTouched] = useState(false)
 
-    const inputChangedHandler = (event, index) => {
-        let inputElements = [...inputs];
-        let singleinputElement = inputElements[index]
-        singleinputElement.value = event.target.value;
-        inputElements[index] = singleinputElement;
-        setInputs(inputElements)
-    }
+    const isLoading = useSelector(state => state.users.loading);
+    const dispatch = useDispatch();
 
-    const submitHandler = (event) => {
-        event.preventDefault();
-        const data = {
-            contact: {}
-        }
-        for( let key in inputs ) {
-            data.contact[inputs[key].config.name] = inputs[key].value
-        }
-        dispatch(register(data))
-    }
     let renderedinputElemets = (
         inputs.map((input, index) => {
             return (
@@ -86,7 +87,10 @@ const Account = (props) => {
                     label={input.label}
                     config={input.config}
                     value={input.value}
-                    changed={(event) => inputChangedHandler(event, index)}
+                    changed={(event) => inputChangedHandler(event, index, setInputs, inputs)}
+                    isValid={validateInput(input.value, input.rules)}
+                    clicked={() => setTouched(true)}
+                    isTouched={touched}
                 />
             )
         })
@@ -96,7 +100,7 @@ const Account = (props) => {
             className={style.account}
         >
             <FormContainer
-                submitted={(event) => submitHandler(event)}
+                submitted={(event) => submitHandler(event, dispatch, register, inputs)}
             >
                 { isLoading ?  <Loader /> : renderedinputElemets }
             </FormContainer>

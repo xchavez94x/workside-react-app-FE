@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     loading: false,
     error: null,
-    submittedData: {}
+    submittedData: {},
+    isSubmitted: false
 }
 
 const usersReducer = createSlice({
@@ -15,7 +16,7 @@ const usersReducer = createSlice({
         },
         submissionSuccessful: (state, action ) => {
             state.loading = false;
-            state.submittedData = action.payload
+            state.submittedData = action.payload;
         },
         submissionFailed: (state, action) => {
             state.loading = false;

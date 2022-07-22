@@ -9,3 +9,13 @@ export function addClasses (someProp, unwantedClass, ...classes) {
     }
     return classNames
 }
+
+export function toggleClass(prop, isTouched, invalid, ...styles) {
+    let classes = Array.from(styles)
+    if( prop === false && isTouched) {
+        classes.push(invalid)
+    } else if(classes.includes(invalid)) {
+        classes.pop()
+    }
+    return classes.join(' ')
+}

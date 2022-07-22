@@ -28,6 +28,9 @@ function App() {
             path='/' 
             element={<Main />} 
           />
+          <Route
+            element={() => (<h1>Page isn't available</h1>)}
+          />
         </Routes>
       </Container>
     </div>

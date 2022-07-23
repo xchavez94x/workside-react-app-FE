@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { Routes, Route } from "react-router-dom"
 import Container from './components/Container';
 import Navbar from './components/Navbar';
-import Main from './pages/Main';
 import './App.css';
-import Account from './pages/Account';
 import MobileMenu from './components/MobileMenu';
 import Backdrop from './components/Backdrop';
+import Loader from './components/Loader';
 
 function App() {
   const [ showMenu, setShowMenu ] = useState(false)
+  const  LazyMain  = lazy(() => {
+    return import("./pages/Main")
+  })
+  const LazyAccount  = lazy(() => {
+    return import("./pages/Account")
+  })
   const showMobileMenuHandler = () => {
     setShowMenu( prevShow => !prevShow) 
   }
@@ -20,17 +25,22 @@ function App() {
         <MobileMenu show={showMenu} />
         <Backdrop show={showMenu} clicked={showMobileMenuHandler} />
         <Routes>
-          <Route 
-            path='/account'
-            element={<Account />}
-          />
-          <Route 
-            path='/' 
-            element={<Main />} 
-          />
-          <Route
-            element={() => (<h1>Page isn't available</h1>)}
-          />
+            <Route 
+              path='/account'
+              element={
+                <Suspense fallback={<Loader />}>
+                  <LazyAccount />
+                </Suspense>
+              }
+            />
+            <Route 
+              path='/' 
+              element={
+                <Suspense fallback={<Loader />}>
+                  <LazyMain />
+                </Suspense>
+              } 
+            />
         </Routes>
       </Container>
     </div>

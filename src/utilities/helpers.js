@@ -6,10 +6,7 @@ export const checkStatus = (status, firstIcon, seconsIcon) => {
      * @param secondIcon > link to the icon 
      * @returns a single icon
      */
-
     return status === "verified" ? firstIcon : seconsIcon
-
-
 }
 
 export const inputChangedHandler = (event, index, setStatecb, inputs) => {
@@ -29,4 +26,12 @@ export const submitHandler = (event, dispatch, func, inputs) => {
         data.contact[inputs[key].config.name] = inputs[key].value
     }
     dispatch(func(data))
+}
+
+export const setIsTouched = (inputs, index, setStateCb) => {
+    let copiedInputs = [...inputs];
+    let singleInput = copiedInputs[index];
+    singleInput.isTouched = true
+    copiedInputs[index] = singleInput;
+    setStateCb(copiedInputs)
 }

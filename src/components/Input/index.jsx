@@ -3,7 +3,7 @@ import {toggleClass} from "../../utilities/addClass";
 
 import style from "./Input.module.css";
 
-const Input = ({ label, changed, clicked, config, value, isValid, isTouched }) => {
+const Input = ({ label, changed, clicked, config, value, isValid, isTouched, keyDown}) => {
     return (
         <div 
             className={style.input}
@@ -19,8 +19,7 @@ const Input = ({ label, changed, clicked, config, value, isValid, isTouched }) =
                 {...config}
                 onChange={changed}
                 value={value}
-
-            />
+            />  
         </div>
     )
 }

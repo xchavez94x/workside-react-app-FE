@@ -1,13 +1,15 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { register } from '../../store/actions';
 import { inputChangedHandler, submitHandler } from "../../utilities/helpers";
 import validateInput from "../../utilities/validateInput";
+import { setIsTouched } from "../../utilities/helpers"
 
 import FormContainer from '../../components/FormContainer';
 import Loader from '../../components/Loader';
 import Input from '../../components/Input';
-import style from "./Account.module.css"
+import style from "./Account.module.css";
+import Message from '../../components/Message';
 
 const Account = () => {
     const [inputs, setInputs] = useState([
@@ -20,21 +22,24 @@ const Account = () => {
             },
             value: "",
             rules: {
-                minLength: 5
+                minLength: 2
             },
-            isValid: false
+            isValid: false, 
+            isTouched: false
         },
         {
-            label: "Lastname",
+            label: "Last name",
             config: {
                 type: "text",
                 name: "lastname",
                 placeholder: "Please enter your last name"
             },
             rules: {
-                minLength: 1
+                minLength: 2
             },
             value: "",
+            isValid: false, 
+            isTouched: false
         },
         {
             label: "E-mail",
@@ -44,9 +49,12 @@ const Account = () => {
                 placeholder: "Please enter your valid E-mail"
             },
             rules: {
-                minLength: 1
+                minLength: 5,
+                isEmail: true
             },
             value: "",
+            isValid: false, 
+            isTouched: false
 
         },
         {
@@ -57,9 +65,11 @@ const Account = () => {
                 placeholder: "Please choose a secure password"
             },
             rules: {
-                minLength: 1
+                minLength: 8
             },
             value: "",
+            isValid: false, 
+            isTouched: false
         },
         {
             label: "Password confirm",
@@ -69,12 +79,13 @@ const Account = () => {
                 placeholder: "Please re-enter your password"
             },
             rules: {
-                minLength: 1
+                minLength: 8
             },
             value: "",
+            isValid: false, 
+            isTouched: false
         }
     ]);
-    const [touched, setTouched] = useState(false)
 
     const isLoading = useSelector(state => state.users.loading);
     const dispatch = useDispatch();
@@ -89,8 +100,8 @@ const Account = () => {
                     value={input.value}
                     changed={(event) => inputChangedHandler(event, index, setInputs, inputs)}
                     isValid={validateInput(input.value, input.rules)}
-                    clicked={() => setTouched(true)}
-                    isTouched={touched}
+                    clicked={() => setIsTouched(inputs, index, setInputs)}
+                    isTouched={input.isTouched}
                 />
             )
         })
@@ -99,9 +110,11 @@ const Account = () => {
         <div
             className={style.account}
         >
+            <Message />
             <FormContainer
                 submitted={(event) => submitHandler(event, dispatch, register, inputs)}
             >
+
                 { isLoading ?  <Loader /> : renderedinputElemets }
             </FormContainer>
         </div>

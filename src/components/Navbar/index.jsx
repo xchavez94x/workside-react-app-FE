@@ -27,16 +27,10 @@ const Navbar = ({ burgerClicked }) => {
                     Search jobs
                 </NavLink>
                 <NavLink 
-                    to="/"
-                
+                    to="/post-job"
+                    className={({isActive}) => isActive ? styles.active : ""}
                 >
                     Post a job
-                </NavLink>
-                <NavLink 
-                    to="/"
-
-                >
-                    Sponsor us
                 </NavLink>
             </div>
             <div

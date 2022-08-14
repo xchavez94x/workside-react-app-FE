@@ -9,7 +9,7 @@ import Button from "../Button"
 
 function Message () {
     const hasError = useSelector(state => state.users.hasError);
-    const errorMessage = useSelector(state => state.users.error);
+    const errorMessage = useSelector(state => state?.users?.error?.message);
     const dispatch = useDispatch()
     return (
         <div className={ hasError ? style.message : style.hide }>

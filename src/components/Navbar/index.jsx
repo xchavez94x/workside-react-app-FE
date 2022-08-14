@@ -1,11 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import NavItem from '../NavItem';
 
 import styles from "./Navbar.module.css";
 import Logo from "../../assets/images/Logo.svg";
 import BurgerMenu from "../../assets/images/Hamburger-Menu.svg"
 
 const Navbar = ({ burgerClicked }) => {
+    const navItems = [
+        { path: "/", label: "Main" },
+        { path: "/post-job", label: "Post a job" },
+    ];
+    
     return (
         <div  
             className={styles.navbar}
@@ -18,38 +23,23 @@ const Navbar = ({ burgerClicked }) => {
             <div 
                 className={styles.links}
             >
-                <NavLink 
-                    to="/" 
-                    className={ ({isActive}) => {
-                        return isActive ? styles.active : ""
-                    }}
-                >
-                    Search jobs
-                </NavLink>
-                <NavLink 
-                    to="/"
+                { navItems.map((item, index) => {
+                    const { path, label } = item;
+                    return <NavItem 
+                        key={index} 
+                        path={path} 
+                        label={label} 
+                        styelsClassname={styles.active} />
+                }) }
                 
-                >
-                    Post a job
-                </NavLink>
-                <NavLink 
-                    to="/"
-
-                >
-                    Sponsor us
-                </NavLink>
             </div>
             <div
                 className={styles.account}
             >
-                <NavLink 
-                    to="/account"
-                    className={ ({isActive}) => {
-                        return isActive ? styles.active : ""
-                    }}    
-                >
-                    Account
-                </NavLink>
+                <NavItem 
+                    path="/account" 
+                    label="Account" 
+                    styelsClassname={styles.active} />
             </div>
             <div
                 className={styles.burger}

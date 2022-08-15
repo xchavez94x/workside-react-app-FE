@@ -15,6 +15,9 @@ function App() {
   const LazyAccount  = lazy(() => {
     return import("./pages/Account")
   })
+  const LazyPostJob  = lazy(() => {
+    return import("./pages/PostJob")
+  })
   const showMobileMenuHandler = () => {
     setShowMenu( prevShow => !prevShow) 
   }
@@ -34,6 +37,14 @@ function App() {
               }
             />
             <Route 
+              path='/post-job' 
+              element={
+                <Suspense fallback={<Loader />}>
+                  <LazyPostJob />
+                </Suspense>
+              } 
+            />
+            <Route 
               path='/' 
               element={
                 <Suspense fallback={<Loader />}>
@@ -41,6 +52,7 @@ function App() {
                 </Suspense>
               } 
             />
+            
         </Routes>
       </Container>
     </div>

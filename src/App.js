@@ -6,7 +6,6 @@ import MobileMenu from './components/MobileMenu';
 import Backdrop from './components/Backdrop';
 import Loader from './components/Loader';
 import SuspenseContainer from './HOC/Suspense';
-import { getJobs } from './services/jobs.service';
 import './App.css';
 
 function App() {
@@ -14,17 +13,9 @@ function App() {
     console.log('App mounted')
   }, [])
   const [ showMenu, setShowMenu ] = useState(false)
-  const  LazyMain  = lazy(() => {
-    return import("./pages/Main")
-  })
+  const  LazyMain  = lazy(() => import("./pages/Main"))
   const LazyAccount  = lazy(() => import("./pages/Account"))
-  const LazySearch = lazy(() => import('./components/Search'));
-  useEffect(() => {
-    getJobs()
-    .then( result => console.log(result))
-  })
-
-  const LazyPostJob = lazy(() => import('./pages/PostJob'));
+  const LazySearch = lazy(() => import('./pages/SearchContainer'));
   const showMobileMenuHandler = () => {
     setShowMenu( prevShow => !prevShow) 
   }
@@ -44,14 +35,6 @@ function App() {
               }
             />
             <Route 
-              path='/post-job' 
-              element={
-                <SuspenseContainer fallBackComponent={<Loader />}>
-                  <LazyPostJob />
-                </SuspenseContainer>
-              } 
-            />
-            <Route 
               path='/' 
               element={
                 <SuspenseContainer fallBackComponent={<Loader />}>
@@ -59,9 +42,9 @@ function App() {
                 </SuspenseContainer>
               } 
             />
-            <Route path='/post-job' element={
+            <Route path='/search-jobs' element={
               <Suspense fallback={<Loader />}>
-                <LazyPostJob />
+                <LazySearch />
               </Suspense>
             } />
         </Routes>

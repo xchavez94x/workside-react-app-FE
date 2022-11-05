@@ -3,7 +3,7 @@ import {toggleClass} from "../../utilities/addClass";
 
 import style from "./Input.module.css";
 
-const Input = ({ label, changed, clicked, config, value, isValid, isTouched, type}) => {
+const Input = ({ label, changed, clicked, config, value, isValid, isTouched, type, refrence}) => {
     let inputType ;
     switch(type) {
         case "text":
@@ -14,6 +14,7 @@ const Input = ({ label, changed, clicked, config, value, isValid, isTouched, typ
                 {...config}
                 onChange={changed}
                 value={value}
+                ref={refrence}
             />  
             )
             break;

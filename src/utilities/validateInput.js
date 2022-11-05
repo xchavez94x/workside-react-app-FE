@@ -4,7 +4,7 @@ function validateInput(value, rules) {
     if(value.length >= minLength) {
         isValid = true
     }
-    if(isEmail) {
+    if(value.length > minLength && isEmail) {
         isValid = validateEmail(value)
     }
     return isValid

@@ -1,5 +1,5 @@
-import React, { useState, lazy, useEffect } from 'react';
-import { Routes, Route } from "react-router-dom";
+import React, { useState, lazy, Suspense, useEffect } from 'react';
+import { Routes, Route } from "react-router-dom"
 import Container from './components/Container';
 import Navbar from './components/Navbar';
 import MobileMenu from './components/MobileMenu';
@@ -10,18 +10,24 @@ import { getJobs } from './services/jobs.service';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    console.log('App mounted')
+  }, [])
   const [ showMenu, setShowMenu ] = useState(false)
   const  LazyMain  = lazy(() => {
     return import("./pages/Main")
   })
   const LazyAccount  = lazy(() => import("./pages/Account"))
-  const LazyPostJob  = lazy(() => import("./pages/PostJob"))
   const LazySearch = lazy(() => import('./components/Search'));
-  const showMobileMenuHandler = () => setShowMenu( prevShow => !prevShow) 
   useEffect(() => {
     getJobs()
     .then( result => console.log(result))
   })
+
+  const LazyPostJob = lazy(() => import('./pages/PostJob'));
+  const showMobileMenuHandler = () => {
+    setShowMenu( prevShow => !prevShow) 
+  }
   return (
     <div className="App">
       <Container>
@@ -53,10 +59,10 @@ function App() {
                 </SuspenseContainer>
               } 
             />
-            <Route path='/search-jobs' element={
-              <SuspenseContainer fallBackComponent={<Loader />} >
-                <LazySearch />
-              </SuspenseContainer>
+            <Route path='/post-job' element={
+              <Suspense fallback={<Loader />}>
+                <LazyPostJob />
+              </Suspense>
             } />
         </Routes>
       </Container>

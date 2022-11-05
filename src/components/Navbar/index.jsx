@@ -19,6 +19,7 @@ const Navbar = ({ burgerClicked }) => {
             <div 
                 className={styles.links}
             >
+<<<<<<< HEAD
                 { navItems.map(({ path, label }, index) => {
                     return <NavItem 
                         key={index} 
@@ -27,6 +28,22 @@ const Navbar = ({ burgerClicked }) => {
                         styelsClassname={styles.active} />
                 }) }
                 
+=======
+                <NavLink 
+                    to="/" 
+                    className={ ({isActive}) => {
+                        return isActive ? styles.active : ""
+                    }}
+                >
+                    Search jobs
+                </NavLink>
+                <NavLink 
+                    to="/post-job"
+                    className={({isActive}) => isActive ? styles.active : ""}
+                >
+                    Post a job
+                </NavLink>
+>>>>>>> safty-users
             </div>
             <div
                 className={styles.account}

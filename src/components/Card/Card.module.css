@@ -1,6 +1,7 @@
 .card {
+    min-width: 340px;
     width: 100%;
-    min-height: 152px;
+    min-height: 182px;
     max-height: 200px;
     border-radius: 5px;
     margin: .55rem auto;
@@ -87,7 +88,7 @@
 } */
 
 @media screen and (max-width: 480px) {
-    .card{
+    /* .card{
         min-height: 200px;
-    }
+    } */
 }

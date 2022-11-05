@@ -15,7 +15,7 @@ const usersReducer = createSlice({
         submissionInitialized: (state) => {
             state.loading = true;
         },
-        submissionSuccessful: (state, action ) => {
+        submissionSuccessful: (state, action) => {
             state.loading = false;
             state.submittedData = action.payload;
         },
@@ -23,7 +23,7 @@ const usersReducer = createSlice({
             state.loading = false;
             state.error = action.payload
             state.hasError = true
-        }, 
+        },
         hideError: (state) => {
             state.hasError = false
         }

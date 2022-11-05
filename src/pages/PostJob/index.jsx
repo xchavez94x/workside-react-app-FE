@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 
 import FormContainer from '../../components/FormContainer';
@@ -52,13 +51,6 @@ const PostJob = () => {
             </FormContainer>
         </div>
         
-=======
-import React from 'react'
-
-const PostJob = () => {
-    return (
-        <div>PostJob</div>
->>>>>>> safty-users
     )
 }
 
